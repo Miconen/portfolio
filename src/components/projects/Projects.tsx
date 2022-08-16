@@ -27,9 +27,7 @@ const Projects = () => {
 
   if (isLoading) return <p>Loading...</p>;
 
-  return {
-    // TODO: Loop through repositories
-  };
+  return <ul className="projects">{ githubData.map((repo) => <Project key={repo.name} repo={repo} />) }</ul>;
 };
 
 export default Projects;

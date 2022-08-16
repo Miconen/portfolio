@@ -1,0 +1,13 @@
+@import "../../styles/mixins";
+
+.projects {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    @include lg {
+        flex-direction: row;
+    }
+}

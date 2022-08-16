@@ -1,0 +1,18 @@
+.project {
+    background-color: var(--color-bg-alt);
+    padding: 25px;
+    border-radius: 25px;
+    font-size: 0.75rem; 
+    list-style: none;
+    flex-grow: 1;
+    &__fullname {
+        margin: 0;
+    }
+
+    &__username {
+    }
+
+    &__repo {
+        font-weight: 600;    
+    }
+}
