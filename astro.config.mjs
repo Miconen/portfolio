@@ -4,7 +4,6 @@ import react from '@astrojs/react';
 // https://astro.build/config
 export default defineConfig({
 	integrations: [react()],
-	site: 'https://localhost.3000',
 	base: '.',
 	output: 'static',
 });
