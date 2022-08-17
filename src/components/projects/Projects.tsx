@@ -27,7 +27,13 @@ const Projects = () => {
 
   if (isLoading) return <p>Loading...</p>;
 
-  return <ul className="projects">{ githubData.map((repo) => <Project key={repo.name} repo={repo} />) }</ul>;
+  return (
+    <ul className="projects">
+      {githubData.map((repo) => (
+        <Project key={repo.name} repo={repo} />
+      ))}
+    </ul>
+  );
 };
 
 export default Projects;

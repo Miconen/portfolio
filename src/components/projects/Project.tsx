@@ -1,6 +1,8 @@
+import { GitData } from './github.d.ts'; 
+import { getColor } from './LanguageColors.ts';
 import "./Project.scss";
 
-const Project = ({ repo }: any) => {
+const Project = ({ repo }: GitData) => {
   console.log(repo);
   return (
     <li className="project">
@@ -9,8 +11,9 @@ const Project = ({ repo }: any) => {
           <span className="project__username">{repo.owner.login}</span>/
           <span className="project__repo">{repo.name}</span>
         </p>
+          <p className="project__description">{repo.description}</p>
       </a>
-      <span>{repo.language}</span>
+      <p className="project__language"><span style={{ color: getColor(repo.language)}}>• </span>{repo.language}</p>
     </li>
   );
 };
