@@ -16,11 +16,11 @@ main {
   background-size: cover;
 
   &.slant {
-    background-image: url("./bg-alt-slant.svg");
+    background-image: url("../bg-alt-slant.svg");
   }
 
   &.slantmirrored {
-    background-image: url("./bg-alt-slant-mirrored.svg");
+    background-image: url("../bg-alt-slant-mirrored.svg");
   }
 }
 
@@ -61,6 +61,30 @@ main {
   > section.md {
     max-width: var(--container-size-md);
   }
+}
+
+.moreprojects {
+    height: 50px;
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    @include md {
+        width: var(--container-size-md);
+    }
+
+    svg {
+        fill: white; 
+        margin-left: 10px;
+    }
+
+    &__link {
+        text-decoration: none;
+    }
 }
 
 footer {
