@@ -86,15 +86,3 @@ main {
         text-decoration: none;
     }
 }
-
-footer {
-  background-color: var(--color-bg-alt);
-
-  > .container {
-    padding-top: var(--section-spacer);
-    padding-bottom: var(--section-spacer);
-    max-width: var(--container-size-lg);
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
