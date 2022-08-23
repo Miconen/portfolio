@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import PortfolioHeader from '../components/header/PortfolioHeader.jsx';
 import Projects from '../components/projects/Projects.jsx';
+import LinkedInLink from '../components/socials/LinkedIn.jsx';
+import GitHubLink from '../components/socials/GitHub.jsx';
 import './index.scss';
 ---
 
@@ -70,10 +72,10 @@ import './index.scss';
                 <section>
                     <h2>Links.</h2>
                     <article>
-                        <h3>Linkedin</h3>
+                        <LinkedInLink content={"LinkedIn"} />
                     </article>
                     <article>
-                        <h3>GitHub</h3>
+                        <GitHubLink content={"GitHub"} />
                     </article>
                 </section>
                 <section>

@@ -85,16 +85,21 @@ footer {
     > .container > section {
         display: flex; 
         flex-direction: column;
-        gap: 1rem;
+        gap: 50px;
+
+        @include md {
+            gap: 2rem;
+        }
 
         > section {
+            flex-grow: 1;
 
-            > h3 {
-                font-height: 0.75rem;
+            > article {
+                margin: 0;
             }
 
-            > p {
-                font-size: 0.5rem;
+            h3, p {
+                font-size: 1rem!important;
             }
 
         }
