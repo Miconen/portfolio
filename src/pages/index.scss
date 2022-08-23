@@ -96,5 +96,11 @@ footer {
     max-width: var(--container-size-lg);
     margin-left: auto;
     margin-right: auto;
+    display: flex;
+    flex-direction: column;
+
+    @include md {
+        flex-direction: row;
+    }
   }
 }
