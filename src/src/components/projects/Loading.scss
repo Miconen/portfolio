@@ -1,0 +1,33 @@
+$color-github: #4078c0;
+$gray: #ccc;
+$text: #555;
+$spacing: 20px;
+
+.loading {
+    background-color: var(--color-bg);
+    padding: 25px;
+    font-size: 1.25rem;
+    list-style: none;
+    flex-grow: 1;
+    border: 5px solid;
+    border-image: linear-gradient(45deg, var(--color-bg-alt), lightblue) 10;
+    margin: var(--section-spacer) 0;
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    box-sizing: border-box;
+    border: 1px solid $gray;
+    padding: $spacing;
+    color: $text;
+    text-decoration: none;
+    font-size: 13px;
+    flex: 1;
+
+    &__message {
+        font-size: 1.25rem;
+        margin: 10px;
+        text-align: center;
+    }
+}
