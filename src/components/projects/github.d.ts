@@ -17,9 +17,9 @@ export type Owner = {
     received_events_url: string;
     type: string;
     site_admin: boolean;
-}
+};
 
-export type GitData = {
+export type Repository = {
     id: number;
     node_id: string;
     name: string;
@@ -98,4 +98,4 @@ export type GitData = {
     open_issues: number;
     watchers: number;
     default_branch: string;
-}
+};
