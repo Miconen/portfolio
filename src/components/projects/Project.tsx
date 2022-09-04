@@ -1,9 +1,8 @@
-import type { GitData } from "./github.d.js";
+import type { Repository } from "./github.d.js";
 import { getColor } from "./LanguageColors.js";
 import "./Project.scss";
 
-const Project = (repo: GitData) => {
-    console.log(repo);
+const Project = ({ repo }: Repository) => {
     return (
         <a href={repo.html_url} className="project__link">
             <li className="project">
