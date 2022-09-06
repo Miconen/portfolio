@@ -46,6 +46,6 @@ jobs:
         uses: withastro/action@v0
         with:
           # Path of the directory containing your site
-          path: ./dist
+          path: .
           package-manager: npm
           
