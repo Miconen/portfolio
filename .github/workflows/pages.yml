@@ -47,3 +47,5 @@ jobs:
         with:
           # Path of the directory containing your site
           path: ./dist
+          package-manager: npm
+          
