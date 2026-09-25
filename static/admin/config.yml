@@ -1,0 +1,95 @@
+# Sveltia CMS: edits the Markdown in /content and commits to main, which redeploys the site.
+backend:
+  name: github
+  repo: Miconen/portfolio-next
+  branch: main
+
+media_folder: static/uploads
+public_folder: /uploads
+
+i18n:
+  structure: multiple_files
+  locales: [fi, en]
+  default_locale: fi
+
+collections:
+  - name: projects
+    label: Projektit
+    label_singular: Projekti
+    folder: content/projects
+    extension: md
+    format: frontmatter
+    create: true
+    identifier_field: title
+    slug: "{{slug}}"
+    i18n: true
+    sortable_fields: [order, title]
+    summary: "{{order}} · {{title}}"
+    fields:
+      - { name: title, label: Nimi, widget: string, i18n: true }
+      - { name: summary, label: Yhden rivin kuvaus, widget: text, i18n: true }
+      - { name: role, label: Rooli, widget: string, i18n: true }
+      - { name: featured, label: Etusivulla, widget: boolean, default: false, i18n: false }
+      - { name: group, label: Ryhmä, widget: relation, collection: groups, value_field: "{{slug}}", search_fields: [title], display_fields: [title], required: false, i18n: false }
+      - { name: order, label: Järjestys, widget: number, value_type: int, default: 99, i18n: false }
+      - { name: repos, label: Repot (owner/name), widget: list, i18n: false }
+      - { name: skills, label: Taidot, widget: list, i18n: false }
+      - { name: body, label: Kuvaus, widget: markdown, i18n: true }
+
+  - name: groups
+    label: Ryhmät
+    label_singular: Ryhmä
+    folder: content/groups
+    extension: md
+    format: frontmatter
+    create: true
+    identifier_field: title
+    i18n: true
+    fields:
+      - { name: title, label: Nimi, widget: string, i18n: true }
+      - { name: order, label: Järjestys, widget: number, value_type: int, default: 99, i18n: false }
+      - { name: body, label: Esittely, widget: markdown, i18n: true }
+
+  - name: pages
+    label: Sivut
+    i18n: true
+    files:
+      - name: home
+        label: Etusivu
+        file: content/pages/home.{{locale}}.md
+        i18n: true
+        fields:
+          - { name: tagline, label: Esittelylause, widget: text, i18n: true }
+          - { name: primaryLanguages, label: Pääkielet, widget: list, i18n: false }
+          - { name: location, label: Sijainti, widget: string, i18n: true }
+          - { name: languages, label: Kielet, widget: string, i18n: true }
+          - { name: freeTime, label: Vapaa-aika, widget: string, i18n: true }
+          - { name: environment, label: Ympäristö, widget: string, i18n: true }
+      - name: about
+        label: Minusta
+        file: content/pages/about.{{locale}}.md
+        i18n: true
+        fields:
+          - { name: title, label: Otsikko, widget: string, i18n: true }
+          - { name: body, label: Teksti, widget: markdown, i18n: true }
+
+  - name: settings
+    label: Asetukset
+    files:
+      - name: skills
+        label: Taitokategoriat
+        file: content/skills.yml
+        fields:
+          - name: categories
+            label: Kategoriat
+            widget: list
+            fields:
+              - { name: id, label: Tunniste, widget: string }
+              - name: label
+                label: Nimi
+                widget: object
+                fields:
+                  - { name: fi, label: Suomeksi, widget: string }
+                  - { name: en, label: In English, widget: string }
+              - { name: skills, label: Taidot, widget: list }
+              - { name: showLastUsed, label: Näytä viimeisin käyttö, widget: boolean, default: true, required: false }

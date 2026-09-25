@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# micorintala.com
 
-## Getting Started
+My portfolio: SvelteKit (Svelte 5) rendered on a Node server on Railway, in Finnish (`/`) and English (`/en`).
 
-First, run the development server:
+- **Content** lives in [`content/`](content/) as Markdown with YAML front matter, one file per language.
+  Edit it directly or through [Sveltia CMS](https://github.com/sveltia/sveltia-cms) at `/admin/`
+  (sign in with a GitHub personal access token); saving commits to `main` and redeploys.
+- **Repository metadata** (languages, last push) is fetched live from the GitHub API and cached for an hour.
+- **Skills** are never listed by hand: each Project declares the Skills it demonstrates, and the skills section
+  inverts that. Categories live in [`content/skills.yml`](content/skills.yml).
+- The vocabulary (Project, Group, Repository, Skill, Role, Featured, Write-up) is defined in
+  [`CONTEXT.md`](CONTEXT.md); architectural decisions are in [`docs/adr/`](docs/adr/).
 
-```bash
+## Develop
+
+```sh
+npm install
+cp .env.example .env   # optional: RESEND_API_KEY, GITHUB_TOKEN
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Command | |
+|---|---|
+| `npm run dev` | dev server |
+| `npm run check` | type check |
+| `npm test` | unit tests, including guards on the content in `content/` |
+| `npm run build && npm start` | production build on `node build` (set `ORIGIN=http://localhost:3000` to post forms over http) |
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Content
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+A Project is `content/projects/<slug>.fi.md` (plus `.en.md` for the translation):
 
-## Learn More
+```md
+---
+title: "Tectonic Bot"
+summary: "One line for cards and lists."
+role: "Lead developer · 560+ commits"
+featured: true          # shown on the home page
+group: "tectonic"       # optional, a file in content/groups/
+order: 2                # position on the page / within the group
+repos: ["Miconen/tectonic-bot"]
+skills: ["TypeScript", "discord.js"]
+---
 
-To learn more about Next.js, take a look at the following resources:
+The Write-up, in Markdown.
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Shared fields (`featured`, `group`, `order`, `repos`, `skills`) are read from the Finnish file; the English file
+only needs the translated `title`, `summary`, `role` and body.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Deploy (Railway)
 
-## Deploy on Vercel
+[`railway.toml`](railway.toml) builds with Railpack and runs `node build`, health-checked at `/healthz`.
+Set these variables on the service:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Variable | |
+|---|---|
+| `RESEND_API_KEY` | required for the contact form |
+| `GITHUB_TOKEN` | recommended (raises the GitHub API rate limit) |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+`ORIGIN` is not needed: behind Railway's HTTPS proxy the request origin already matches.
+
+Mail: the form sends through Resend as `form@micorintala.com` to `contact@micorintala.com`, which Cloudflare
+Email Routing forwards to Gmail; replies go straight to the visitor.

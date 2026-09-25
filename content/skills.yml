@@ -1,0 +1,31 @@
+# Skill categories for the skills section. A Skill only appears if a Project declares it;
+# anything declared but not listed here falls into an "Other" group automatically.
+categories:
+  - id: languages
+    label: { fi: Kielet, en: Languages }
+    skills: [Go, TypeScript, Python, "C#", Rust, PHP, JavaScript, Lua, Shell]
+  - id: web
+    label: { fi: Web & UI, en: Web & UI }
+    skills: [SvelteKit, Next.js, Angular, Tailwind]
+  - id: backend
+    label: { fi: Backend & data, en: Backend & data }
+    skills: [Node.js, .NET, PostgreSQL, MySQL, SQLite, Kysely, OpenAPI, SignalR]
+  - id: infra
+    label: { fi: Infra, en: Infra }
+    skills: [Docker, GitHub Actions, OpenTofu, Nix]
+  - id: testing
+    label: { fi: Testaus, en: Testing }
+    skills: [Playwright, Vitest, Mocha, go test]
+  - id: integrations
+    label: { fi: Rajapinnat & integraatiot, en: APIs & integrations }
+    skills: [Wise Old Man API, Discord API, discord.js, RuneProfile API, GeoGuessr API, WordPress REST API, Google Maps API, OpenWeatherMap API, MyHelsinki API]
+  - id: practices
+    label: { fi: Käytännöt, en: Practices }
+    skills: [Agile, Trunk-based development]
+    showLastUsed: false
+  - id: ai
+    label: { fi: AI-työkalut, en: AI tools }
+    skills: [Claude, GPT]
+  - id: environment
+    label: { fi: Työympäristö, en: Environment }
+    skills: [Linux, Neovim]

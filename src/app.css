@@ -1,0 +1,197 @@
+:root {
+	--bg: #f4f2ec;
+	--fg: #1d1c1a;
+	--dim: #6f6c64;
+	--line: #c9c6bc;
+	--acc: #a85800;
+	--status: #e8e5dc;
+	--sans: 'IBM Plex Sans', system-ui, sans-serif;
+	--mono: 'JetBrains Mono', ui-monospace, monospace;
+	color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg: #0f1011;
+		--fg: #d9d6cf;
+		--dim: #8a8983;
+		--line: #34343a;
+		--acc: #f0a830;
+		--status: #1b1c1f;
+	}
+}
+
+* {
+	box-sizing: border-box;
+}
+html {
+	scroll-padding-top: 16px;
+}
+body {
+	margin: 0;
+	background: var(--bg);
+	color: var(--fg);
+	font: 15px/1.6 var(--sans);
+	-webkit-text-size-adjust: 100%;
+}
+a {
+	color: inherit;
+}
+:focus-visible {
+	outline: 2px solid var(--acc);
+	outline-offset: 2px;
+}
+
+.wrap {
+	max-width: 1180px;
+	margin-inline: auto;
+	padding: 0 16px 48px;
+}
+.mono {
+	font-family: var(--mono);
+	font-size: 13px;
+	font-variant-ligatures: none;
+}
+.dim {
+	color: var(--dim);
+}
+.acc {
+	color: var(--acc);
+}
+.num {
+	color: var(--dim);
+	font-weight: 400;
+	margin-right: 4px;
+}
+
+/* titled, bordered pane (lazygit / btop style) */
+.pane {
+	border: 1px solid var(--line);
+	border-radius: 4px;
+	margin: 0;
+	padding: 14px 18px;
+	min-width: 0;
+}
+.pane > legend {
+	padding: 0 8px;
+	margin-left: -4px;
+	font-family: var(--mono);
+	font-size: 13px;
+}
+.pane > legend a {
+	text-decoration: none;
+	font-weight: 600;
+	color: var(--acc);
+}
+.pane > legend a:hover {
+	text-decoration: underline;
+}
+
+/* numbered section heading: 01 PROJEKTIT ──── */
+.sec {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	font: 400 13px/1.4 var(--mono);
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	margin: 56px 0 20px;
+}
+.sec::after {
+	content: '';
+	flex: 1;
+	border-top: 1px solid var(--line);
+}
+.sec .n {
+	color: var(--acc);
+}
+
+/* definition list of facts */
+.facts {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	gap: 6px 24px;
+	margin: 0;
+}
+.facts dt {
+	color: var(--dim);
+}
+.facts dd {
+	margin: 0;
+	min-width: 0;
+	overflow-wrap: anywhere;
+}
+.facts a {
+	color: var(--acc);
+	text-decoration: none;
+}
+.facts a:hover {
+	text-decoration: underline;
+}
+
+/* Write-up / prose from Markdown */
+.prose p,
+.prose ul {
+	margin: 0 0 12px;
+	max-width: 68ch;
+}
+.prose ul {
+	padding-left: 20px;
+}
+.prose li {
+	margin: 2px 0;
+}
+.prose h2 {
+	font: 600 13px/1.4 var(--mono);
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--dim);
+	margin: 24px 0 8px;
+}
+.prose code {
+	font: 13px var(--mono);
+	background: var(--status);
+	padding: 1px 4px;
+	border-radius: 3px;
+}
+.prose a {
+	color: var(--acc);
+}
+.prose > :last-child {
+	margin-bottom: 0;
+}
+
+kbd {
+	font: 12px var(--mono);
+	padding: 0 5px;
+	border: 1px solid var(--line);
+	border-bottom-width: 2px;
+	border-radius: 3px;
+	background: var(--status);
+	color: var(--fg);
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	*,
+	*::before,
+	*::after {
+		transition: none !important;
+		animation: none !important;
+	}
+}
+
+/* language colour dot; the faint ring keeps dark colours (e.g. Lua's navy) visible on dark backgrounds */
+.dot {
+	box-shadow: 0 0 0 1px color-mix(in srgb, var(--fg) 25%, transparent);
+}
