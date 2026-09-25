@@ -2,6 +2,10 @@
 
 My portfolio: SvelteKit (Svelte 5) rendered on a Node server on Railway, in Finnish (`/`) and English (`/en`).
 
+On a first visit, browsers that don't prefer Finnish are redirected to the English version of the page;
+the language switch stores a `lang` cookie that overrides this. Requests without `Accept-Language` (crawlers)
+are never redirected.
+
 - **Content** lives in [`content/`](content/) as Markdown with YAML front matter, one file per language.
   Edit it directly or through [Sveltia CMS](https://github.com/sveltia/sveltia-cms) at `/admin/`
   (sign in with a GitHub personal access token); saving commits to `main` and redeploys.

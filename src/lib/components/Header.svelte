@@ -25,7 +25,15 @@
 				onHelp();
 			}}><kbd>?</kbd> {m.kbd_hint()}</button
 		>
-		<a class="lang dim" href={switchHref} hreflang={other} lang={other} data-sveltekit-reload>{m.switch_language()}</a>
+		<!-- Remember the choice so first-visit language defaulting never overrides it. -->
+		<a
+			class="lang dim"
+			href={switchHref}
+			hreflang={other}
+			lang={other}
+			data-sveltekit-reload
+			onclick={() => (document.cookie = `lang=${other}; path=/; max-age=31536000; samesite=lax`)}>{m.switch_language()}</a
+		>
 	</nav>
 </header>
 
