@@ -3,6 +3,6 @@ tagline: "Ohjelmistokehittäjä Suomesta. Rakennan backendejä Go:lla ja TypeScr
 primaryLanguages: ["Go", "TypeScript", "Svelte"]
 location: "Suomi"
 languages: "suomi, englanti"
-freeTime: "liikunta, pelit"
+freeTime: "koodaus, liikunta, pelit"
 environment: "Neovim, zsh, Linux"
 ---
