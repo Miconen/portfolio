@@ -1,7 +1,7 @@
 # Sveltia CMS: edits the Markdown in /content and commits to main, which redeploys the site.
 backend:
   name: github
-  repo: Miconen/portfolio-next
+  repo: Miconen/portfolio
   branch: main
 
 media_folder: static/uploads
