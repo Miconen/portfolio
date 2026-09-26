@@ -6,7 +6,7 @@ featured: true
 group: "tectonic"
 order: 1
 repos: ["Miconen/tectonic-api", "Miconen/tectonic-website", "Miconen/tectonic-sync"]
-skills: ["Go", "PostgreSQL", "OpenAPI", "SvelteKit", "TypeScript", "Docker", "GitHub Actions", "Wise Old Man API", "go test"]
+skills: ["Go", "chi", "Huma", "pgx", "squirrel", "goose", "PostgreSQL", "OpenAPI", "SvelteKit", "Svelte", "TypeScript", "Docker", "GitHub Actions", "Wise Old Man API", "go test"]
 ---
 
 Tectonicin tietojärjestelmän ydin on Go:lla kirjoitettu REST-rajapinta, joka korvasi aiemman toteutuksen. Samaa rajapintaa käyttävät klaanin Discord-botti, bingosivusto ja verkkosivu, joten liiketoimintalogiikka on yhdessä paikassa.

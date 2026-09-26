@@ -6,7 +6,7 @@ featured: true
 group: "tectonic"
 order: 3
 repos: ["cosmic-abyssless/tectonic-bingo", "Miconen/tectonic-bingo-bot", "Miconen/player-performance-ranker", "Miconen/wom-player-score"]
-skills: ["Python", "TypeScript", "Playwright", "Vitest", "OpenTofu", "Docker", "GitHub Actions", "Wise Old Man API", "RuneProfile API", "Claude", "GPT"]
+skills: ["Python", "TypeScript", "React", "Tailwind", "Node.js", "Express", "SQLite", "Drizzle", "OCR", "Playwright", "Vitest", "OpenTofu", "Docker", "Railway", "Sentry", "GitHub Actions", "Discord API", "Wise Old Man API", "RuneProfile API", "Claude", "GPT"]
 ---
 
 Työkalut klaanin kilpailuihin ja tapahtumiin.

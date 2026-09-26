@@ -6,7 +6,7 @@ featured: true
 group: "tectonic"
 order: 2
 repos: ["Miconen/tectonic-bot"]
-skills: ["TypeScript", "discord.js", "PostgreSQL", "Docker", "Mocha"]
+skills: ["TypeScript", "Discord API", "PostgreSQL", "Docker", "Mocha", "Biome", "Pino"]
 ---
 
 Discord-botti, jonka kautta klaanin yli 350 jäsentä hoitavat arjen: pisteet ja rankit, tapahtumat ja moderoinnin. Botti on ollut käytössä vuosia, ja se on projekti, josta olen oppinut eniten.

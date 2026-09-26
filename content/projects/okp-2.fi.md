@@ -5,7 +5,7 @@ role: "Kehittäjä · kouluryhmä"
 featured: false
 order: 10
 repos: ["Miconen/OKP-2"]
-skills: ["Angular", ".NET", "C#", "PostgreSQL", "Docker", "MyHelsinki API", "Google Maps API", "OpenWeatherMap API"]
+skills: ["Angular", ".NET", "C#", "PostgreSQL", "Docker", "Jasmine", "Karma", "Azure Pipelines", "MyHelsinki API", "Google Maps API", "OpenWeatherMap API"]
 ---
 
 Koulun ryhmäprojekti, joka näyttää paikkoja, aktiviteetteja ja tapahtumia MyHelsinki Open API:sta käyttäjän sijainnin tai haun perusteella. Sää tulee OpenWeatherMapista ja kartat Google Mapsista. Rekisteröitynyt käyttäjä voi tallentaa suosikkeja.

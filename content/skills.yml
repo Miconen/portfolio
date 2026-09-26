@@ -6,26 +6,26 @@ categories:
     skills: [Go, TypeScript, Python, "C#", Rust, PHP, JavaScript, Lua, Shell]
   - id: web
     label: { fi: Web & UI, en: Web & UI }
-    skills: [SvelteKit, Next.js, Angular, Tailwind]
+    skills: [SvelteKit, Svelte, React, Next.js, Angular, Tailwind, next-intl]
   - id: backend
     label: { fi: Backend & data, en: Backend & data }
-    skills: [Node.js, .NET, PostgreSQL, MySQL, SQLite, Kysely, OpenAPI, SignalR]
+    skills: [Node.js, Express, .NET, chi, Huma, PostgreSQL, MySQL, SQLite, pgx, squirrel, goose, Kysely, Drizzle, OpenAPI, SignalR, JWT, Pino, OCR]
   - id: infra
     label: { fi: Infra, en: Infra }
-    skills: [Docker, GitHub Actions, OpenTofu, Nix]
+    skills: [Docker, GitHub Actions, Azure Pipelines, Railway, Sentry, OpenTofu, Nix]
   - id: testing
     label: { fi: Testaus, en: Testing }
-    skills: [Playwright, Vitest, Mocha, go test]
+    skills: [Playwright, Vitest, Mocha, Jasmine, Karma, go test]
   - id: integrations
     label: { fi: Rajapinnat & integraatiot, en: APIs & integrations }
-    skills: [Wise Old Man API, Discord API, discord.js, RuneProfile API, GeoGuessr API, WordPress REST API, Google Maps API, OpenWeatherMap API, MyHelsinki API]
+    skills: [Wise Old Man API, Discord API, RuneProfile API, GeoGuessr API, WordPress REST API, Google Maps API, OpenWeatherMap API, MyHelsinki API]
   - id: practices
     label: { fi: Käytännöt, en: Practices }
-    skills: [Agile, Trunk-based development]
+    skills: [Agile, Trunk-based development, Monorepo]
     showLastUsed: false
   - id: ai
     label: { fi: AI-työkalut, en: AI tools }
     skills: [Claude, GPT]
   - id: environment
     label: { fi: Työympäristö, en: Environment }
-    skills: [Linux, Neovim]
+    skills: [Linux, Neovim, Biome]

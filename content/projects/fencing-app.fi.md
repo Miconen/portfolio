@@ -5,7 +5,7 @@ role: "Harjoittelu · 4 hengen tiimi"
 featured: true
 order: 1
 repos: ["Miconen/tournament-app"]
-skills: ["TypeScript", "Next.js", "PostgreSQL", "Kysely", "Vitest", "Tailwind", "Agile", "Trunk-based development"]
+skills: ["TypeScript", "Next.js", "React", "next-intl", "PostgreSQL", "Kysely", "JWT", "Docker", "Vitest", "Tailwind", "Agile", "Trunk-based development"]
 ---
 
 Teimme harjoittelussa neljän hengen tiimissä miekkailuseuralle sovelluksen turnausten, tapahtumien ja käyttäjien hallintaan. Sovellus päätyi seuran päivittäiseen käyttöön.

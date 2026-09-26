@@ -5,7 +5,7 @@ role: "Ainoa kehittäjä · perheyritys"
 featured: true
 order: 3
 repos: ["Miconen/pakukuljetus-svelte-kit"]
-skills: ["SvelteKit", "TypeScript", "GPT"]
+skills: ["SvelteKit", "Svelte", "TypeScript", "Monorepo", "GPT"]
 ---
 
 Kaksi sivustoa perheyritykselle: Pakukuljetus ja Noutopalvelu. Ne ovat samassa monorepossa ja jakavat yhteisen komponenttikirjaston.
