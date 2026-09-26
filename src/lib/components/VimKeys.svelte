@@ -1,6 +1,6 @@
 <script lang="ts">
-	// Easter egg: vim-ish keyboard navigation. Ignored while typing or with modifier keys.
-	import { goto } from '$app/navigation';
+	// Easter egg: vim-ish keyboard navigation. Ignored while typing (insert mode) or with modifier keys.
+	import { afterNavigate, goto } from '$app/navigation';
 	import { m } from '$lib/paraglide/messages.js';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import { SECTIONS } from '$lib/site';
@@ -8,12 +8,45 @@
 	let { help = $bindable(false), onescape }: { help?: boolean; onescape?: () => void } = $props();
 
 	let showcmd = $state('');
+	let insert = $state(false);
 	let pending = '';
 	let timer: ReturnType<typeof setTimeout> | undefined;
 
 	const behavior = (): ScrollBehavior => (matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth');
 
+	// Jump list, like vim's Ctrl-O / Ctrl-I: scroll positions left by big in-page jumps. Past either
+	// end it falls through to browser history. `pos === jumps.length` means "not stepping through it".
+	let jumps: number[] = [];
+	let pos = 0;
+	afterNavigate(() => {
+		jumps = [];
+		pos = 0;
+	});
+
+	function mark() {
+		jumps = jumps.slice(0, pos);
+		jumps.push(scrollY);
+		pos = jumps.length;
+	}
+
+	function jumpBack() {
+		if (pos === 0) return history.back();
+		if (pos === jumps.length) jumps.push(scrollY); // so `i` can return here
+		scrollTo({ top: jumps[--pos], behavior: behavior() });
+	}
+
+	function jumpForward() {
+		if (pos >= jumps.length - 1) return history.forward();
+		scrollTo({ top: jumps[++pos], behavior: behavior() });
+	}
+
+	function jumpTo(top: number) {
+		mark();
+		scrollTo({ top, behavior: behavior() });
+	}
+
 	function goSection(i: number) {
+		mark();
 		const el = document.getElementById(SECTIONS[i]);
 		if (el) el.scrollIntoView({ behavior: behavior(), block: 'start' });
 		else goto(`${localizeHref('/')}#${SECTIONS[i]}`); // not on the home page
@@ -28,15 +61,18 @@
 		return idx;
 	}
 
+	const isField = (t: EventTarget | null) => t instanceof Element && !!t.closest('input, textarea, select, [contenteditable]');
+
 	function onkeydown(e: KeyboardEvent) {
 		if (e.key === 'Escape') {
+			if (isField(e.target)) (e.target as HTMLElement).blur(); // leave insert mode
 			help = false;
 			onescape?.();
 			return;
 		}
 		// AltGr (needed for { } on Nordic layouts) reports as Ctrl+Alt; let it through.
 		if (e.metaKey || ((e.ctrlKey || e.altKey) && !e.getModifierState('AltGraph'))) return;
-		if ((e.target as HTMLElement).closest('input, textarea, select, [contenteditable]')) return;
+		if (isField(e.target)) return;
 
 		const k = e.key;
 		const cmd = pending + k;
@@ -47,15 +83,17 @@
 		else if (k === 'k') by(-80);
 		else if (k === 'd') by(innerHeight / 2);
 		else if (k === 'u') by(-innerHeight / 2);
-		else if (k === 'G') scrollTo({ top: document.documentElement.scrollHeight, behavior: behavior() });
-		else if (cmd === 'gg') scrollTo({ top: 0, behavior: behavior() });
+		else if (k === 'G') jumpTo(document.documentElement.scrollHeight);
+		else if (cmd === 'gg') jumpTo(0);
 		else if (k === 'g') pending = 'g';
 		else if (k === '}') goSection(Math.min(currentSection() + 1, SECTIONS.length - 1));
 		else if (k === '{') {
 			const i = currentSection();
-			if (i <= 0) scrollTo({ top: 0, behavior: behavior() });
+			if (i <= 0) jumpTo(0);
 			else goSection(i - 1);
-		} else if (k === '?') help = !help;
+		} else if (k === 'o') jumpBack();
+		else if (k === 'i') jumpForward();
+		else if (k === '?') help = !help;
 		else return;
 
 		e.preventDefault();
@@ -66,6 +104,7 @@
 </script>
 
 <svelte:window {onkeydown} />
+<svelte:document onfocusin={(e) => (insert = isField(e.target))} onfocusout={() => (insert = false)} />
 
 {#if help}
 	<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
@@ -85,6 +124,8 @@
 					<dd>{m.help_section()}</dd>
 					<dt><kbd>gg</kbd> <kbd>G</kbd></dt>
 					<dd>{m.help_ends()}</dd>
+					<dt><kbd>o</kbd> <kbd>i</kbd></dt>
+					<dd>{m.help_jumps()}</dd>
 					<dt><kbd>?</kbd></dt>
 					<dd>{m.help_help()}</dd>
 					<dt><kbd>Esc</kbd></dt>
@@ -96,7 +137,9 @@
 	</div>
 {/if}
 
-{#if showcmd}
+{#if insert}
+	<div class="modeline mono" aria-hidden="true"><span class="acc">-- INSERT --</span></div>
+{:else if showcmd}
 	<div class="modeline mono" aria-hidden="true"><span class="acc">-- NORMAL --</span><span>{showcmd}</span></div>
 {/if}
 
