@@ -3,7 +3,7 @@
 	import type { RepoMeta } from '$lib/server/github';
 	import { GITHUB_URL } from '$lib/site';
 
-	let { names, repos, showAge }: { names: string[]; repos: Record<string, RepoMeta>; showAge?: (iso: string) => string } = $props();
+	let { names, repos }: { names: string[]; repos: Record<string, RepoMeta> } = $props();
 
 	const me = GITHUB_URL.split('/').at(-1);
 	const topLang = (meta?: RepoMeta) => (meta ? Object.entries(meta.languages).sort((a, b) => b[1] - a[1])[0]?.[0] : undefined);
@@ -32,12 +32,8 @@
 					<span class="sr-only">{owner}/</span>
 				{/if}
 				<span class="name">{name}</span>
-				{#if lang || (showAge && repos[full])}
-					<span class="meta">
-						{#if lang}<i class="dot" style:background={langColors[lang] ?? '#888'}></i>{lang}{/if}{#if showAge && repos[full]}{' · '}{showAge(
-								repos[full].pushedAt
-							)}{/if}
-					</span>
+				{#if lang}
+					<span class="meta"><i class="dot" style:background={langColors[lang] ?? '#888'}></i>{lang}</span>
 				{/if}
 			</a>
 		</li>

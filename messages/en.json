@@ -60,7 +60,6 @@
 	"back_all": "all projects",
 	"project_repos": "repositories",
 	"project_skills": "skills",
-	"project_last_push": "updated {ago}",
 	"projects_title": "Projects",
 	"projects_intro": "Every project the skills are based on. More on GitHub.",
 	"featured_projects": "featured projects",

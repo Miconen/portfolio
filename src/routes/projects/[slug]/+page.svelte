@@ -1,6 +1,5 @@
 <script lang="ts">
 	import RepoRows from '$lib/components/RepoRows.svelte';
-	import { ago } from '$lib/format';
 	import { iconFor } from '$lib/icons';
 	import { m } from '$lib/paraglide/messages.js';
 	import { localizeHref } from '$lib/paraglide/runtime';
@@ -33,7 +32,7 @@
 	<aside>
 		<fieldset class="pane">
 			<legend>{m.project_repos()} <span class="dim">· {p.repos.length}</span></legend>
-			<RepoRows names={p.repos} repos={data.repos} showAge={(iso) => m.project_last_push({ ago: ago(iso) })} />
+			<RepoRows names={p.repos} repos={data.repos} />
 		</fieldset>
 		<fieldset class="pane">
 			<legend>{m.project_skills()} <span class="dim">· {p.skills.length}</span></legend>

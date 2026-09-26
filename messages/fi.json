@@ -60,7 +60,6 @@
 	"back_all": "kaikki projektit",
 	"project_repos": "repot",
 	"project_skills": "taidot",
-	"project_last_push": "päivitetty {ago}",
 	"projects_title": "Projektit",
 	"projects_intro": "Kaikki projektit, joihin taidot perustuvat. Lisää löytyy GitHubista.",
 	"featured_projects": "etusivun projektit",
