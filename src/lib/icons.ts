@@ -1,10 +1,11 @@
 // Skill → icon. Brand glyphs come from Simple Icons (CC0); OpenAI's mark, which Simple Icons dropped,
 // from Lobe Icons (MIT). Skills without a glyph get a short monogram.
 import {
-	siAngular, siClaude, siDiscord, siDiscorddotjs, siDocker, siDotnet, siGithubactions, siGnubash, siGo,
-	siGooglemaps, siJavascript, siLinux, siLua, siMocha, siMysql, siNeovim, siNextdotjs, siNixos,
-	siNodedotjs, siOpenapiinitiative, siOpentofu, siPhp, siPostgresql, siPython, siRust, siSqlite, siSvelte,
-	siTailwindcss, siTypescript, siVitest, siWordpress
+	siAngular, siBiome, siClaude, siDiscord, siDiscorddotjs, siDocker, siDotnet, siDrizzle, siExpress,
+	siGithubactions, siGnubash, siGo, siGooglemaps, siJasmine, siJavascript, siJsonwebtokens, siLinux, siLua,
+	siMocha, siMysql, siNeovim, siNextdotjs, siNixos, siNodedotjs, siOpenapiinitiative, siOpentofu, siPhp,
+	siPino, siPostgresql, siPython, siRailway, siReact, siRust, siSentry, siSqlite, siSvelte, siTailwindcss,
+	siTypescript, siVitest, siWordpress
 } from 'simple-icons';
 
 export type SkillIcon = { path: string; hex?: string; evenodd?: boolean } | { mono: string };
@@ -21,13 +22,16 @@ const glyphs: Record<string, SkillIcon> = {
 	SQLite: siSqlite, OpenAPI: siOpenapiinitiative, Docker: siDocker,
 	'GitHub Actions': siGithubactions, OpenTofu: siOpentofu, Nix: siNixos, Vitest: siVitest, Mocha: siMocha,
 	'go test': siGo, 'Discord API': siDiscord, 'discord.js': siDiscorddotjs, 'Google Maps API': siGooglemaps,
-	'WordPress REST API': siWordpress, Claude: siClaude, GPT: openai, Linux: siLinux, Neovim: siNeovim
+	'WordPress REST API': siWordpress, Claude: siClaude, GPT: openai, Linux: siLinux, Neovim: siNeovim,
+	Svelte: siSvelte, React: siReact, Express: siExpress, JWT: siJsonwebtokens, Drizzle: siDrizzle, Pino: siPino,
+	Railway: siRailway, Sentry: siSentry, Jasmine: siJasmine, Biome: siBiome
 };
 
 const monograms: Record<string, string> = {
 	'C#': 'C#', SignalR: 'SR', Playwright: 'PW', 'Wise Old Man API': 'WOM', 'RuneProfile API': 'RP',
 	'GeoGuessr API': 'GG', Kysely: 'Ky', 'OpenWeatherMap API': 'OW', 'MyHelsinki API': 'MH', Agile: 'AG',
-	'Trunk-based development': 'TB'
+	'Trunk-based development': 'TB', 'next-intl': 'NI', chi: 'chi', Huma: 'Hu', pgx: 'pgx', squirrel: 'sq',
+	goose: 'gs', OCR: 'OCR', 'Azure Pipelines': 'AZ', Karma: 'Ka', Monorepo: 'MR'
 };
 
 export function iconFor(skill: string): SkillIcon {
